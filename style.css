@@ -8,10 +8,20 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #ff0000, #000dff);
     color: #fff;
     text-align: center;
+    overflow: hidden; /* Prevent scrollbars */
 }
+
+canvas#background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Send the canvas to the background */
+}
+
 
 /* Header */
 h3 {
