@@ -45,6 +45,7 @@ function rand_spin() {
     return matrix;
 }
 
+
 // Check Winning Patterns
 function check_patterns(matrix) {
     const u1 = matrix[0][0], u2 = matrix[0][1], u3 = matrix[0][2], u4 = matrix[0][3], u5 = matrix[0][4];
@@ -63,90 +64,146 @@ function check_patterns(matrix) {
         return resultMatrix;
     }
 
+    if (m1 === m2 && m1 === m3 && m1 === m4 && m1 === m5) return { pattern: cpy(matrix, m1), pay: 100000 };
+    if (u1 === u2 && u1 === u3 && u1 === u4 && u1 === u5) return { pattern: cpy(matrix, u1), pay: 50000 };
+    if (d1 === d2 && d1 === d3 && d1 === d4 && d1 === d5) return { pattern: cpy(matrix, d1), pay: 50000 };
+
+    // Checking "mmdmm"
     if (m1 === m2 && m1 === d3 && m1 === m4 && m1 === m5) {            
         return { pattern: cpy(matrix,m1), pay: 25000 };
     }
+    
+    // Checking "mmumm"
     if (m1 === m2 && m1 === u3 && m1 === m4 && m1 === m5) {            
         return { pattern: cpy(matrix,m1), pay: 25000 };
     }
+    
+    // Checking "mdmdm"
     if (m1 === d2 && m1 === m3 && m1 === d4 && m1 === m5) {
         return { pattern: cpy(matrix,m1), pay: 12500 };
     }
+    
+    // Checking "mumum"
     if (m1 === u2 && m1 === m3 && m1 === u4 && m1 === m5) {
         return { pattern: cpy(matrix,m1), pay: 12500 };
     }
+
+    // Checking "mdmum"
     if (m1 === d2 && m1 === m3 && m1 === u4 && m1 === m5){
         return { pattern: cpy(matrix, m1), pay: 6200 };
     } 
 
+    // "mumdm"
+    if (m1 === u2 && m1 === m3 && m1 === d4 && m1 === m5) {
+        return { pattern: cpy(matrix, m1), pay: 6200 };
+    }
+
+    // "ummmu"
+    if (u1 === m2 && u1 === m3 && u1 === m4 && u1 === u5) {
+        return { pattern: cpy(matrix, u1), pay: 3200 };
+    }
+
+    // "dmmmd"
+    if (d1 === m2 && d1 === m3 && d1 === m4 && d1 === d5) {
+        return { pattern: cpy(matrix, d1), pay: 3200 };
+    }
+
+    // "umumu"
+    if (u1 === m2 && u1 === u3 && u1 === m4 && u1 === u5) {
+        return { pattern: cpy(matrix, u1), pay: 1600 };
+    }
+
+    // "dmdmd"
+    if (d1 === m2 && d1 === d3 && d1 === m4 && d1 === d5) {
+        return { pattern: cpy(matrix, d1), pay: 1600 };
+    }
+
+    // "dmumd"
+    if (d1 === m2 && m2 === u3 && u3 === m4 && m4 === d5) {
+        return { pattern: cpy(matrix, d1), pay: 800 };
+    }
+
+    // Checking "umdmu" pattern
+    if (u1 === m2 && m2 === d3 && d3 === m4 && m4 === u5) {
+        return { pattern: cpy(matrix, u1), pay: 800 };
+    }
+
+    // Checking "uumdd" pattern
+    if (u1 === u2 && u1 === m3 && u1 === d4 && u1 === d5) {
+        return { pattern: cpy(matrix, u1), pay: 400 };
+    }
+
+    // Checking "ddmuu" pattern
+    if (d1 === d2 && d1 === m3 && d1 === u4 && d1 === u5) {
+        return { pattern: cpy(matrix, d1), pay: 400 };
+    }
+
+    // Checking "ddudd"
+    if (d1 === d2 && d1 === u3 && d1 === d4 && d1 === d5) {
+        return { pattern: cpy(matrix, d1), pay: 200 };
+    }
+
+    // Checking "uuduu"
+    if (u1 === u2 && u1 === d3 && u1 === u4 && u1 === u5) {
+        return { pattern: cpy(matrix, u1), pay: 200 };
+    }
+
+    // Checking "duuud"
+    if (d1 === u2 && d1 === u3 && d1 === u4 && d1 === d5) {
+        return { pattern: cpy(matrix, d1), pay: 100 };
+    }
+
+    // Checking "udddu"
+    if (u1 === d2 && u1 === d3 && u1 === d4 && u1 === u5) {
+        return { pattern: cpy(matrix, u1), pay: 100 };
+    }
+
     return { pattern: 'LOSE', pay: 0 };
-}
-
-// Add Animation Effect
-function animateGrid(matrix) {
-    let delay = 100; // Delay between each symbol appearing
-
-    grid.forEach((row, rowIndex) => {
-        row.innerHTML = ''; // Clear existing symbols
-        matrix[rowIndex].forEach((col, colIndex) => {
-            setTimeout(() => {
-                const cell = document.createElement('div');
-                cell.textContent = col;
-                cell.classList.add('slot-symbol'); // Add CSS class for animation
-                row.appendChild(cell);
-            }, delay * (colIndex + rowIndex * 5)); // Delay based on position
-        });
-    });
 }
 
 // Main Game Function
 async function playGame() {
+    // Simulate Backend API Call
     const matrix = rand_spin();
     const result = check_patterns(matrix);
+
+    // Update Grid
+    grid.forEach((row, rowIndex) => {
+        row.innerHTML = '';
+        matrix[rowIndex].forEach(col => {
+            const cell = document.createElement('div');
+            cell.textContent = col;
+            row.appendChild(cell);
+        });
+    });
 
     // Remove highlights and clear quote
     grid.forEach(row => {
         row.querySelectorAll('div').forEach(cell => cell.classList.remove('win-cell'));
     });
-    quoteSpan.textContent = '';
+    quoteSpan.textContent = ''; 
 
-    // Animate the grid
-    animateGrid(matrix);
-
-    setTimeout(() => {
-        if (result.pattern === 'LOSE') {
-            statusSpan.textContent = 'You Lose! 😢';
-            payoutSpan.textContent = `$0`;
-            quoteSpan.textContent = getRandomQuote();
-        } else {
-            statusSpan.textContent = `You Win! 🎉`;
-            payoutSpan.textContent = `$${result.pay}`;
-            result.pattern.forEach((row, rowIndex) => {
-                row.forEach((cell, colIndex) => {
-                    if (cell === '$') {
-                        grid[rowIndex].children[colIndex].classList.add('win-cell');
-                    }
-                });
+    // Handle Result
+    if (result.pattern === 'LOSE') {
+        statusSpan.textContent = 'You Lose! 😢';
+        payoutSpan.textContent = `$0`;
+        quoteSpan.textContent = getRandomQuote(); 
+    } else {
+        statusSpan.textContent = `You Win! 🎉 Pattern: ${result.pattern}`;
+        payoutSpan.textContent = `$${result.pay}`;
+        result.pattern.forEach((row, rowIndex) => {
+            row.forEach((cell, colIndex) => {
+                if (cell === '$') {
+                    grid[rowIndex].children[colIndex].classList.add('win-cell');
+                }
             });
-        }
-    }, 1000); // Give time for animation before showing results
+        });
+    }
+
+    // Display matrix in console
+    console.log("Matrix:");
+    matrix.forEach(row => console.log(row.join(' ')));
 }
 
-const betButtons = document.querySelectorAll('.bet-btn');
-const selectedBetDisplay = document.getElementById('selected-bet');
-
-  betButtons.forEach(button => {
-      button.addEventListener('click', () => {
-          betButtons.forEach(btn => btn.classList.remove('selected')); // Remove previous selection
-          button.classList.add('selected');
-          const betAmount = button.getAttribute('data-amount');
-          selectedBetDisplay.textContent = `Selected Bet: $${betAmount}`;
-      });
-  });
 // Play Button Event Listener
 playBtn.addEventListener('click', playGame);
-
-
-const styleSheet = document.createElement("style");
-styleSheet.innerText = styles;
-document.head.appendChild(styleSheet);

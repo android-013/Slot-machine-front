@@ -124,6 +124,48 @@ h3 {
     background: #218838;
 }
 
+#bet-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.bet-row {
+    display: flex;
+    gap: 10px;
+}
+
+.bet-btn {
+    padding: 10px 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    background: #007BFF;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.bet-btn:hover {
+    background: #0056b3;
+}
+
+.bet-btn.selected {
+    background: #28a745;
+    color: white;
+}
+
+#selected-bet {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+}
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .row div {
@@ -175,3 +217,21 @@ h3 {
         box-shadow: 0 0 20px #ffeb3b, 0 0 30px #ffd700;
     }
 }
+
+.slot-symbol {
+    display: inline-block;
+    font-size: 2rem;
+    animation: spinEffect 0.3s ease-in-out;
+  }
+  .win-cell {
+    background-color: yellow;
+    animation: flash 0.5s alternate infinite;
+  }
+  @keyframes spinEffect {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  @keyframes flash {
+    0% { background-color: yellow; }
+    100% { background-color: gold; }
+  }
