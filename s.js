@@ -191,6 +191,7 @@ async function playGame() {
     } else {
         statusSpan.textContent = `You Win! 🎉 Pattern: ${result.pattern}`;
         payoutSpan.textContent = `$${result.pay}`;
+        
         result.pattern.forEach((row, rowIndex) => {
             row.forEach((cell, colIndex) => {
                 if (cell === '$') {
