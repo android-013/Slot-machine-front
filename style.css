@@ -142,7 +142,7 @@ h3 {
 
 .bet-btn {
     padding: 10px 15px;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
     border: none;
     background: #007BFF;
@@ -162,7 +162,7 @@ h3 {
 }
 
 #selected-bet {
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: bold;
     margin-top: 10px;
     text-align: center;
