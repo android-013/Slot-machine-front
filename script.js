@@ -240,4 +240,16 @@ async function playGame() {
 }
 
 // Play Button Event Listener
-playBtn.addEventListener('click', playGame);
+playBtn.addEventListener('click', () => {
+    // Disable the button
+    playBtn.disabled = true;
+    
+    // Play the game
+    playGame();
+
+    // Re-enable the button after 1500 ms
+    setTimeout(() => {
+        playBtn.disabled = false;
+    }, 1600);
+});
+
