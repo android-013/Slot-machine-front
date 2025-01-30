@@ -39,7 +39,7 @@ function getRandomQuote() {
 
 // Simulate Backend Logic (Spin)
 function rand_spin() {
-    const symbols = ['🃏', '🍀', '🍒']; 
+    const symbols = ['🃏', '7️⃣', '🍀', '🍒']; 
     const matrix = Array.from({ length: 3 }, () => Array(5).fill(0));
 
     for (let j = 0; j < 5; j++) {
@@ -81,103 +81,103 @@ function check_patterns(matrix) {
 
     // Check for a full horizontal row match
     if (m1 === m2 && m1 === m3 && m1 === m4 && m1 === m5) {
-        return {pattern: cpy(matrix, m1), pay: 100000 };
+        return {pattern: cpy(matrix, m1), pay: 100 };
     }
     if (u1 === u2 && u1 === u3 && u1 === u4 && u1 === u5) {
-        return { pattern: cpy(matrix, u1), pay: 50000 };
+        return { pattern: cpy(matrix, u1), pay: 50 };
     }
     if (d1 === d2 && d1 === d3 && d1 === d4 && d1 === d5) {
-        return { pattern: cpy(matrix, d1), pay: 50000 };
+        return { pattern: cpy(matrix, d1), pay: 50 };
     }
 
     // Checking "mmdmm" pattern
     if (m1 === m2 && m1 === d3 && m1 === m4 && m1 === m5) {            
-        return { pattern: cpy(matrix, m1), pay: 25000 };
+        return { pattern: cpy(matrix, m1), pay: 25 };
     }
 
     // Checking "mmumm" pattern
     if (m1 === m2 && m1 === u3 && m1 === m4 && m1 === m5) {            
-        return { pattern: cpy(matrix, m1), pay: 25000 };
+        return { pattern: cpy(matrix, m1), pay: 25 };
     }
 
     // Checking "mdmdm" pattern
     if (m1 === d2 && m1 === m3 && m1 === d4 && m1 === m5) {
-        return { pattern: cpy(matrix, m1), pay: 12500 };
+        return { pattern: cpy(matrix, m1), pay: 12.500 };
     }
 
     // Checking "mumum" pattern
     if (m1 === u2 && m1 === m3 && m1 === u4 && m1 === m5) {
-        return { pattern: cpy(matrix, m1), pay: 12500 };
+        return { pattern: cpy(matrix, m1), pay: 12.500 };
     }
 
     // Checking "mdmum" pattern
     if (m1 === d2 && m1 === m3 && m1 === u4 && m1 === m5){
-        return { pattern: cpy(matrix, m1), pay: 6200 };
+        return { pattern: cpy(matrix, m1), pay: 6.200 };
     }
 
     // "mumdm" pattern
     if (m1 === u2 && m1 === m3 && m1 === d4 && m1 === m5) {
-        return { pattern: cpy(matrix, m1), pay: 6200 };
+        return { pattern: cpy(matrix, m1), pay: 6.200 };
     }
 
     // "ummmu" pattern
     if (u1 === m2 && u1 === m3 && u1 === m4 && u1 === u5) {
-        return { pattern: cpy(matrix, u1), pay: 3200 };
+        return { pattern: cpy(matrix, u1), pay: 3.200 };
     }
 
     // "dmmmd" pattern
     if (d1 === m2 && d1 === m3 && d1 === m4 && d1 === d5) {
-        return { pattern: cpy(matrix, d1), pay: 3200 };
+        return { pattern: cpy(matrix, d1), pay: 3.200 };
     }
 
     // "umumu" pattern
     if (u1 === m2 && u1 === u3 && u1 === m4 && u1 === u5) {
-        return { pattern: cpy(matrix, u1), pay: 1600 };
+        return { pattern: cpy(matrix, u1), pay: 1.600 };
     }
 
     // "dmdmd" pattern
     if (d1 === m2 && d1 === d3 && d1 === m4 && d1 === d5) {
-        return { pattern: cpy(matrix, d1), pay: 1600 };
+        return { pattern: cpy(matrix, d1), pay: 1.600 };
     }
 
     // "dmumd" pattern
     if (d1 === m2 && m2 === u3 && u3 === m4 && m4 === d5) {
-        return { pattern: cpy(matrix, d1), pay: 800 };
+        return { pattern: cpy(matrix, d1), pay: .800 };
     }
 
     // Checking "umdmu" pattern
     if (u1 === m2 && m2 === d3 && d3 === m4 && m4 === u5) {
-        return { pattern: cpy(matrix, u1), pay: 800 };
+        return { pattern: cpy(matrix, u1), pay: .800 };
     }
 
     // Checking "uumdd" pattern
     if (u1 === u2 && u1 === m3 && u1 === d4 && u1 === d5) {
-        return { pattern: cpy(matrix, u1), pay: 400 };
+        return { pattern: cpy(matrix, u1), pay: .400 };
     }
 
     // Checking "ddmuu" pattern
     if (d1 === d2 && d1 === m3 && d1 === u4 && d1 === u5) {
-        return { pattern: cpy(matrix, d1), pay: 400 };
+        return { pattern: cpy(matrix, d1), pay: .400 };
     }
 
     // Checking "ddudd" pattern
     if (d1 === d2 && d1 === u3 && d1 === d4 && d1 === d5) {
-        return { pattern: cpy(matrix, d1), pay: 200 };
+        return { pattern: cpy(matrix, d1), pay: .200 };
     }
 
     // Checking "uuduu" pattern
     if (u1 === u2 && u1 === d3 && u1 === u4 && u1 === u5) {
-        return { pattern: cpy(matrix, u1), pay: 200 };
+        return { pattern: cpy(matrix, u1), pay: .200 };
     }
 
     // Checking "duuud" pattern
     if (d1 === u2 && d1 === u3 && d1 === u4 && d1 === d5) {
-        return { pattern: cpy(matrix, d1), pay: 100 };
+        return { pattern: cpy(matrix, d1), pay: .100 };
     }
 
     // Checking "udddu" pattern
     if (u1 === d2 && u1 === d3 && u1 === d4 && u1 === u5) {
-        return { pattern: cpy(matrix, u1), pay: 100 };
+        return { pattern: cpy(matrix, u1), pay: .100 };
     }
 
     return { pattern: 'LOSE', pay: 0 };
@@ -224,9 +224,10 @@ async function playGame() {
             payoutSpan.textContent = `$0`;
             quoteSpan.textContent = getRandomQuote();
         } else {
-            let totalPayout = selectedBet * result.pay; // Calculate win amount
+            let totalPayout = (selectedBet * result.pay).toFixed(2);
             statusSpan.textContent = `You Win! 🎉`;
             payoutSpan.textContent = `$${totalPayout}`;
+
 
             result.pattern.forEach((row, rowIndex) => {
             row.forEach((cell, colIndex) => {
