@@ -22,8 +22,6 @@ canvas#background {
     z-index: -1; /* Send the canvas to the background */
 }
 
-
-/* Header */
 h3 {
     font-size: 2rem;
     margin: 20px 0;
@@ -43,7 +41,6 @@ h3 {
     height: 180px;       
     overflow: hidden;    
 }
-
 
 .row {
     display: flex;
@@ -69,7 +66,7 @@ h3 {
 
 .row div:hover {
     transform: scale(1.1);
-    background: #ffa502;
+    background: #ff7802;
     color: #000;
 }
 
@@ -150,6 +147,9 @@ h3 {
     border-radius: 8px;
     cursor: pointer;
     transition: 0.3s;
+    height: 35px;
+    width: 50px;
+    text-align: center;
 }
 
 .bet-btn:hover {
@@ -216,6 +216,8 @@ h3 {
 
     .bet-btn{
         font-size: .8rem;
+        height: 30px;
+        width: 45px;
     }
 }
 
