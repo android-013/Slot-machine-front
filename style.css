@@ -22,6 +22,55 @@ canvas#background {
     z-index: -1; /* Send the canvas to the background */
 }
 
+/* General Navigation Bar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e1e1e;
+    padding: 10px 20px;
+    border-bottom: 2px solid #444;
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.nav-name {
+    color: #fff;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.navbar-right {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-button {
+    text-decoration: none;
+    color: #fff;
+    background-color: #0077b5;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: #005582;
+}
+
+/* Hamburger Icon (Mobile Menu Button) */
+.hamburger {
+    display: none;
+    font-size: 2em;
+    color: #fff;
+    cursor: pointer;
+    margin-left: auto;
+}
+
 h3 {
     font-size: 2rem;
     margin: 20px 0;
