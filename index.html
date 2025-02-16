@@ -10,16 +10,26 @@
 
 </head>
 <body>
+    <!-- Navigation Bar Section -->
     <nav class="navbar">
-        <div class="hamburger-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+        <div class="navbar-left">
+            <img src="images/P1.jpeg" alt="Profile Picture" class="nav-profile-pic">
+            <span class="nav-name">Slot Machine</span>
         </div>
-        <div class="navbar-links" id="navbar-links">
-            <!-- Links will be added here later -->
+        <div class="navbar-right">
+            <a href="experience.html" class="nav-button">v node.js</a>
+            <a href="qualification.html" class="nav-button">v react</a>
         </div>
+        <div class="hamburger" onclick="toggleMenu()">☰</div>
     </nav>
+    
+        <!-- JavaScript for Hamburger Menu -->
+        <script>
+            function toggleMenu() {
+                const navbarRight = document.querySelector('.navbar-right');
+                navbarRight.classList.toggle('active');
+            }
+        </script>
     <canvas id="background"></canvas>
     <div class="container">
         <h1>🎰 Slot Machine Game 🎰</h1>
